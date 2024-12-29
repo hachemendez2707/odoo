@@ -1,0 +1,48 @@
+<odoo>
+    <data>
+        <!-- Acción de Árbol de Acciones Formativas -->
+        <record id="formacion.formacion_action" model="ir.actions.act_window">
+            <field name="name">Gestionar acciones formativas</field>
+            <field name="res_model">formacion.formacion</field>
+            <field name="view_mode">list,form,calendar</field>
+        </record>
+
+        <!-- Menú Principal -->
+        <menuitem id="menu_formacion_interna_principal" 
+        name="Formación Interna"
+        action="formacion.formacion_action"/>
+
+        <!-- Submenú: Acciones Formativas -->
+        <menuitem id="menu_accion_formativa" 
+        name="Acciones Formativas" 
+        parent="menu_formacion_interna_principal" 
+        sequence="10"/>
+
+        <!-- Enlazar la Acción con el Submenú -->
+        <menuitem id="menu_accion_accion_formativa" 
+        parent="menu_accion_formativa" 
+        action="formacion.formacion_action" 
+        sequence="10"/>
+
+        <!-- Submenú: Empleados y Formaciones -->
+        <menuitem id="menu_empleados_formaciones" 
+                  name="Empleados y Formaciones" 
+                  parent="menu_formacion_interna_principal" 
+                  sequence="20"/>
+
+        <!-- Acción de Árbol de Formadores -->
+        <record id="formacion.proveedor_action" model="ir.actions.act_window">
+            <field name="name">Gestionar Formadores</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('supplier_rank', '>', 0)]</field>
+        </record>
+
+        <!-- Submenú: Formadores -->
+        <menuitem id="menu_proveedores" 
+                  name="Formadores" 
+                  parent="menu_formacion_interna_principal" 
+                  action="formacion.proveedor_action"
+                  sequence="30"/>
+    </data>
+</odoo>

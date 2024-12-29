@@ -1,0 +1,76 @@
+<odoo>
+  <data>
+    <!-- Vista de Formulario -->
+    <record id="vista_accion_formativa_formulario" model="ir.ui.view">
+      <field name="name">formacion.formacion.form</field>
+      <field name="model">formacion.formacion</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+        <form string="formacion.formacion">
+          <div class="oe_title">
+            <label for="nombre" string="Información del Curso" class="oe_edit_only"/>
+              <h1>
+              <field name="nombre" modifiers="{'required': True}"></field>
+              </h1>
+          </div>
+          <group>
+            <group string="Información de las acciones formativas">
+              <field name="nombre"/>
+              <field name="formador_id"/>
+              <field name="duracion"/>
+              <field name="horas_por_sesion"/>
+              <field name="numero_sesiones"/>
+              <field name="fecha_inicio"/>
+              <field name="fecha_fin"/>
+              <field name="participantes_ids" widget="many2many_tags"/>
+              <field name="descripcion"/>
+            </group>
+          </group> 
+        </form>
+      </field>
+    </record>
+
+    <!-- Vista de Lista -->
+    <record id="vista_accion_formativa_list" model="ir.ui.view">
+      <field name="name">formacion.formacion.list</field>
+      <field name="model">formacion.formacion</field>
+      <field name="type">list</field>
+      <field name="arch" type="xml">
+        <list string="formacion.formacion">
+          <field name="nombre"/>
+          <field name="formador_id"/>
+          <field name="numero_sesiones"/>
+          <field name="fecha_inicio"/>
+          <field name="fecha_fin"/>
+          <field name="descripcion"/>
+        </list>
+      </field>
+    </record>
+
+    <!-- Vista de Búsqueda -->
+    <record id="formacion.formacion_busqueda" model="ir.ui.view">
+      <field name="name">formacion.formacion.busqueda</field>
+      <field name="model">formacion.formacion</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="nombre"/>
+          <field name="formador_id"/>
+          <field name="participantes_ids"/>
+        </search>
+      </field>
+    </record>
+
+    <!-- Vista de Calendario -->
+    <record id="formacion.formacion_calendario" model="ir.ui.view">
+      <field name="name">formacion.calendario</field>
+      <field name="model">formacion.formacion</field>
+      <field name="arch" type="xml">
+        <calendar string="Acciones Formativas" color="formador_id" mode="month">
+          <field name="nombre"/>
+          <field name="duracion"/>
+          <field name="horas_por_sesion"/>
+        </calendar>
+      </field>
+    </record>
+  </data>
+</odoo>

@@ -1,0 +1,14 @@
+<odoo>
+    <record id="vista_trabajador_formacion_interna" model="ir.ui.view">
+        <field name="name">hr.employee.formacion.interna.form</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Formación Interna" name="formacion_interna">
+                    <field name="formaciones_ids" widget="many2many_tags"/>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

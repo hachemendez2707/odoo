@@ -1,0 +1,17 @@
+<odoo>
+    <record id="vista_proveedor_formador" model="ir.ui.view">
+        <field name="name">res.partner.formador.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <!-- Usamos el campo 'category_id' como referencia -->
+            <xpath expr="//field[@name='category_id']" position="after">
+                <group string="Formador">
+                    <field name="es_formador"/>
+                    <field name="especialidad"/>
+                    <field name="formaciones_ids" widget="many2many_tags"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>
